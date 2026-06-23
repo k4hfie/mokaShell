@@ -15,6 +15,10 @@ void myClear(){
     printf("\033[2J\033[H");
 }
 
+void myEcho(char* line){
+    printf("%s\n", line);
+}
+
 void myExit(int *status){
     printf("\nExiting Terminal...\n");
     printf("Thank you for using mokaShell!\n\n");
