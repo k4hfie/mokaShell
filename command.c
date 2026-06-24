@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <unistd.h>
+#define OUTPUT_SIZE 200
 
 void myHelp(){
     printf("\nCommand List:\n");
@@ -14,9 +16,28 @@ void myHelp(){
 void myClear(){
     printf("\033[2J\033[H");
 }
+void myPwd(){
+    char pwd[OUTPUT_SIZE];
+    getcwd(pwd, sizeof(pwd));
+    printf("%s\n\n", pwd);
+}
 
 void myEcho(char* line){
     printf("%s\n", line);
+}
+
+void myCat(char* line){
+    FILE *fp;
+    fp = fopen(line, "r");
+    char output[OUTPUT_SIZE];
+
+    if (fp == NULL){
+        printf("Could not open file\n");
+    }
+    
+    while (fgets(output, sizeof(output), fp) != NULL){
+        printf("%s", output);
+    }   printf("\n\n");
 }
 
 void myExit(int *status){

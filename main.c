@@ -14,7 +14,7 @@ int main(void){
     myClear();
 
     while (status == 1){
-        terminalPrompt(username);
+        displayPrompt(username);
         terminalInteraction(&status);
     }
 }

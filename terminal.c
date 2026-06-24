@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
-#define INPUT_SIZE 100
+#define INPUT_SIZE 200
+#define OUTPUT_SIZE 200
+
 
 int getInput(char *input, int size){
     if(fgets(input, size, stdin) == NULL){
@@ -24,8 +27,10 @@ void displayTitle(){
     printf("Welcome to mokaShell!\n");
 }
 
-void terminalPrompt(const char *username){
-    printf("%s@mokaShell:~$ ", username);
+void displayPrompt(const char *username){
+    char directory[OUTPUT_SIZE];
+    getcwd(directory, sizeof(directory));
+    printf("%s@mokaShell:%s$ ", username, directory);
 }
 
 char* parseInput(char *input){
@@ -48,8 +53,16 @@ void terminalInteraction(int *status){
         myHelp();
     }
 
-    if (strcmp(command, "echo") == 0){
+    if (strcmp(command, "pwd") == 0){
+        myPwd();
+    }
+
+    else if (strcmp(command, "echo") == 0){
         myEcho(aftercommand);
+    }
+
+    else if (strcmp(command, "cat") == 0){
+        myCat(aftercommand);
     }
 
     else if (strcmp(command, "clear") == 0){
