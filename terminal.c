@@ -42,7 +42,7 @@ void terminalInteraction(int *status){
         myExit(status);
     }
 
-    else{
+    else {
         printf("Command not found!\n\n");
     }
 }

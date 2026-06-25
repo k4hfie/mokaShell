@@ -4,11 +4,9 @@ int getInput(char *input, int size){
     if(fgets(input, size, stdin) == NULL){
         return 1;
     }
-
-    else {
-        input[strcspn(input, "\n")] = '\0';
-        return 0;
-    }
+    
+    input[strcspn(input, "\n")] = '\0';
+    return 0;
 }
 
 void setUsername(char *name, int size, int *status){

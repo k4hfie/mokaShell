@@ -17,7 +17,7 @@ void myHelp(){
     printf("    5. cd    : change directory\n");
     printf("    6. echo  : print line\n");
     printf("    7. cat   : read file\n");
-    printf("    8. exit  : exit teriminal\n\n");
+    printf("    8. exit  : exit terminal\n\n");
 }
 
 void myClear(){
@@ -46,7 +46,7 @@ void myLs(){
         }   
     }
     printf("\n\n");
-    
+
     closedir(dir);
 }
 
