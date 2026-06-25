@@ -1,19 +1,17 @@
-#include <stdio.h>
-#include <string.h>
+#include "library.h"
 #include "command.c"
+#include "function.c"
 #include "terminal.c"
 
-#define USERNAME_SIZE 50
-
 int main(void){
-    int status = 1;
-    char username[50];
+    int status = 0;
+    char username[USERNAME_SIZE];
 
     displayTitle();
     setUsername(username, sizeof(username), &status);
     myClear();
 
-    while (status == 1){
+    while (status == 0){
         displayPrompt(username);
         terminalInteraction(&status);
     }
