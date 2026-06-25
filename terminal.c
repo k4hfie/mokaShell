@@ -43,6 +43,6 @@ void terminalInteraction(int *status){
     }
 
     else{
-        printf("\nCommand not found!\n\n");
+        printf("Command not found!\n\n");
     }
 }
