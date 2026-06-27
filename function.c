@@ -25,5 +25,10 @@ void displayTitle(){
 void displayPrompt(const char *username){
     char directory[OUTPUT_SIZE];
     getcwd(directory, sizeof(directory));
-    printf("%s@mokaShell:%s$ ", username, directory);
+    printf(
+        HGRN "%s@mokashell" RESET ":" 
+        HBLU "%s " RESET "$", 
+        username, 
+        directory
+    );
 }

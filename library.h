@@ -10,4 +10,8 @@
 #define OUTPUT_SIZE 727
 #define USERNAME_SIZE 727
 
-#endif
+#define HGRN "\e[0;92m"
+#define HCYN "\e[0;96m"
+#define RESET "\e[0m"
+
+#endif  

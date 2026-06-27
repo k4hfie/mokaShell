@@ -1,15 +1,15 @@
 #include "library.h"
 
-int checkArguement(const char *arg){
+int validateArguement(const char *arg, const char *cmd){
     if (arg == NULL || arg[0] == '\0'){
-        printf("Argument missing!\n\n");
+        printf("%s: argument not found\n\n", cmd);
         return 1;
     }
     return 0;
 }
 
 void myHelp(){
-    printf("\nCommand List:\n");
+    printf("Command List:\n");
     printf("    1. help  : print command list\n");
     printf("    2. clear : clear terminal\n");
     printf("    3. pwd   : print working directory\n");
@@ -36,7 +36,7 @@ void myLs(){
 
     if ((dir = opendir(".")) == NULL){
         perror("ls");
-        printf("\n");
+        printf("\n\n");
         return;
     }
 
@@ -51,18 +51,18 @@ void myLs(){
 }
 
 void myCd(const char *dirName){
-    if (checkArguement(dirName) == 1){
+    if (validateArguement(dirName,"cd") == 1){
         return;
     }
     
     if (chdir(dirName) != 0){
         perror("cd");
-        printf("\n");
+        printf("\n\n");
     }
 }
 
 void myEcho(const char *line){
-    if (checkArguement(line) == 1){
+    if (validateArguement(line, "echo") == 1){
         return;
     }
 
@@ -70,7 +70,7 @@ void myEcho(const char *line){
 }
 
 void myCat(const char *fileName){
-    if (checkArguement(fileName) == 1){
+    if (validateArguement(fileName, "cat") == 1){
         return;
     }
 
@@ -80,7 +80,7 @@ void myCat(const char *fileName){
 
     if (fp == NULL){
         perror("cat");
-        printf("\n");
+        printf("\n\n");
         return;
     }
     
