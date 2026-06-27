@@ -19,7 +19,7 @@ void setUsername(char *name, int size, int *status){
 
 void displayTitle(){
     printf("\033[2J\033[H");
-    printf("Welcome to mokaShell!\n");
+    printf("Welcome to mokaShell v1.0.0!\n");
 }
 
 void displayPrompt(const char *username){
