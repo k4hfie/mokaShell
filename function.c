@@ -27,7 +27,7 @@ void displayPrompt(const char *username){
     getcwd(directory, sizeof(directory));
     printf(
         HGRN "%s@mokashell" RESET ":" 
-        HBLU "%s " RESET "$", 
+        HCYN "%s" RESET "$ ", 
         username, 
         directory
     );

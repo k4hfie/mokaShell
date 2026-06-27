@@ -36,7 +36,7 @@ void myLs(){
 
     if ((dir = opendir(".")) == NULL){
         perror("ls");
-        printf("\n\n");
+        printf("\n");
         return;
     }
 
@@ -57,7 +57,7 @@ void myCd(const char *dirName){
     
     if (chdir(dirName) != 0){
         perror("cd");
-        printf("\n\n");
+        printf("\n");
     }
 }
 
@@ -80,7 +80,7 @@ void myCat(const char *fileName){
 
     if (fp == NULL){
         perror("cat");
-        printf("\n\n");
+        printf("\n");
         return;
     }
     

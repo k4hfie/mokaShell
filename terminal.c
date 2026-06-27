@@ -4,7 +4,11 @@ void terminalInteraction(int *status){
     char input[INPUT_SIZE];
 
     if(getInput(input, sizeof(input)) == 1){
-        myExit(status);
+        return;
+    }
+
+    if(input[0] == '\0'){
+        return;
     }
 
     char *command = strtok(input, " ");
@@ -43,6 +47,8 @@ void terminalInteraction(int *status){
     }
 
     else {
-        printf("%s: command not found\n", command);
+        printf("%s: command not found\n\n", command);
     }
+
+    return;
 }
