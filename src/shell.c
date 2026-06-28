@@ -1,18 +1,18 @@
 #include "iosize.h"
 #include "shellcmd.h"
 #include "shell.h"
+#include "helper.h"
+#include "color.h"
 
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 
-int terminalInteraction(){
+int startShell(){
     char input[INPUT_SIZE];
 
-    if(getInput(input, sizeof(input)) == 1){
-        return 0;
-    }
-
-    if(input[0] == '\0'){
+    getInput(input, sizeof(input));
+    if(validateInput(input) == 1){
         return 0;
     }
 
@@ -58,19 +58,20 @@ int terminalInteraction(){
     return 0;
 }
 
-int getInput(char *input, int size){
+void getInput(char *input, int size){
     if(fgets(input, size, stdin) == NULL){
-        return 1;
+        return;
     }
     
     input[strcspn(input, "\n")] = '\0';
-    return 0;
+    return;
 }
 
 int setUsername(char *name, int size){
-    printf("Enter Username: "); 
-    if(getInput(name, size) == 1){
-        printf("Username is empty!\n");
+    printf("Enter Username: ");
+    getInput(name, size);
+    if(validateInput(name) == 1){
+        printf("Username is empty!\n\n");
         return 1;
     }
     return 0;

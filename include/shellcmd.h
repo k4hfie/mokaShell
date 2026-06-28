@@ -1,13 +1,13 @@
 #ifndef SHELLCMD_H
 #define SHELLCMD_H
 
-void myhelp();
-void myCleawr();
+void myHelp();
+void myClear();
 void myPwd();
 void myLs();
-void myCd(const char *dirname);
+void myCd(const char *dir);
 void myEcho(const char *line);
 void myCat(const char *filename);
-void myExit(int *status);
+void myExit();
 
 #endif

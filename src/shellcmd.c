@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <stdlib.h>
 
 void myHelp(){
     printf("Command List:\n");
@@ -48,12 +49,23 @@ void myLs(){
     closedir(dir);
 }
 
-void myCd(const char *dirName){
-    if (validateArguement(dirName,"cd") == 1){
+void myCd(const char *dir){
+    if (validateInput(dir) == 1){
+        char *homeDir = getenv("USERPROFILE");
+        if(validateInput(homeDir) == 1){
+            printf("cd: home enviroment variable not found\n\n");
+            return;
+        }
+
+        if (chdir(homeDir) != 0){
+            perror("cd");
+            printf("\n");
+        }
+
         return;
     }
     
-    if (chdir(dirName) != 0){
+    if (chdir(dir) != 0){
         perror("cd");
         printf("\n");
     }
@@ -89,8 +101,7 @@ void myCat(const char *fileName){
     fclose(fp);
 }
 
-void myExit(int *status){
-    *status = 1;
+void myExit(){
     printf("\nExiting Terminal...\n");
     printf("Thank you for using mokaShell!\n\n");
 }
