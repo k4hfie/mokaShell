@@ -1,16 +1,27 @@
 #include "iosize.h"
 #include "shell.h"
+#include "shellcmd.h"
 
 int main(void){
-    int status = 0;
     char username[USERNAME_SIZE];
 
     displayTitle();
-    setUsername(username, sizeof(username));
+
+    while(1){
+        if(setUsername(username, sizeof(username)) == 1){
+            continue;
+        }
+        break;
+    }
+
     myClear();
 
-    while (status == 0){
+    while (1){
         displayPrompt(username);
-        terminalInteraction(&status);
+        if(startShell() == 1){
+            myExit();
+            break;
+        }
+        continue;
     }
 }
