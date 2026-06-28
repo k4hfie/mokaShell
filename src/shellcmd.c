@@ -1,12 +1,10 @@
-#include "library.h"
+#include "iosize.h"
+#include "shellcmd.h"
+#include "helper.h"
 
-int validateArguement(const char *arg, const char *cmd){
-    if (arg == NULL || arg[0] == '\0'){
-        printf("%s: argument not found\n\n", cmd);
-        return 1;
-    }
-    return 0;
-}
+#include <stdio.h>
+#include <unistd.h>
+#include <dirent.h>
 
 void myHelp(){
     printf("Command List:\n");
